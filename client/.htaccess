@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# Route / to index.html
+RewriteRule ^api$ ../server/index.php [L]
