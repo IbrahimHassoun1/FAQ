@@ -1,10 +1,14 @@
+<!-- done -->
 <?php
-
-require("../models/Question.php");
-$question = new Question();
-$question->setQuestion("What is the capital of France?");
-$question->setAnswer("Paris");
-$response = $question->create();
-echo ($response["message"]);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $data = json_decode(file_get_contents("php://input"), true);
+    require("../models/Question.php");
+    $question = new Question();
+    $question->setQuestion($data["question"]);
+    $question->setAnswer($data["answer"]);
+    $response = $question->create();
+    echo ($response["message"]);
+    return $response;
+}
 
 ?>
