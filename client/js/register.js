@@ -1,4 +1,4 @@
-const url='http://localhost/faq/'
+const url='http://ec2-51-44-85-143.eu-west-3.compute.amazonaws.com/faq/'
 
 async function  register(event) {
     event.preventDefault()
