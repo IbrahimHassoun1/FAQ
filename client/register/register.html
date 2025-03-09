@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../css//index.css">
+   
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <div class="table">
         <h1>Register</h1>
-        <form action="">
+        <form id="register" onsubmit="register(event)">
             <label for="email">
                 Full Name:
-                <input type="text" placeholder="John Doe" name="email">
+                <input type="text" placeholder="John Doe" name="Full name">
             </label>
             <label for="email">
                 Email:
@@ -26,5 +29,6 @@
         </form>
         <p>Already have an account? <a href="../index.html">Login.</a></p>
     </div>
+    <script src="../js/register.js"></script>
 </body>
 </html>
