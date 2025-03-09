@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+:root{
+    --primary-color: #f7f7f7 ;
+    --secondary-color: #ffffff;
+    --tertiary-color: #4CAF50 ;
+}
+body{
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.table{
+    width: 50vw;
+    height: 50vh;
+    border:2px solid var(--secondary-color);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.table form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+    
+}
+.table form button{
+    background-color: var(--tertiary-color);
+    border: none;
+    color: var(--primary-color);
+    width: 70%;
+    height: 5vh;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.table form button:hover{
+    opacity: 90%;
+}
+.table form button:active{
+    opacity: 80%;
+}
+.table input{
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+    height: 5vh;
+}
+.table a{
+    color: #4CAF50;
+    cursor: pointer;
+}
