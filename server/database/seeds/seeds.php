@@ -34,8 +34,8 @@ $question->setAnswer("The key elements include:
 Why: Market segmentation, value chain, customer drivers, application context.
 What: Systems, performance parameters, system interfaces, functionality, variability.
 How: Design views, essential patterns, and main concepts.");
-$question->create();
-
+$response = $question->create();
+echo $response['message'];
 $question = new Question();
 $question->setQuestion("What is the definition of `Architecture` in the context of systems engineering?");
 $question->setAnswer("In systems engineering, architecture refers to the fundamental organization of a system, which includes its components, their relationships to each other, and to the environment, as well as the principles guiding its design and evolution.");
