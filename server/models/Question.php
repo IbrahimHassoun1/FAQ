@@ -1,4 +1,3 @@
-<!-- //done -->
 <?php
 require(__DIR__ . "/QuestionSkeleton.php");
 

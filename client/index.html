@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="table">
         <h1>Login</h1>
-        <form action="">
+        <form id="login" onsubmit="login(event)">
             <label for="email">
                 Email:
                 <input type="text" placeholder="example@gmail.com" name="email">
@@ -22,5 +23,6 @@
         </form>
         <p>Don't have an account? <a href="./register/register.html">Sign in.</a></p>
     </div>
+    <script src="./js/login.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-<!-- done -->
 <?php
 require(__DIR__ . "/UserSkeleton.php");
 
@@ -36,10 +35,10 @@ class User extends UserSkeleton
         $password = $this->getPassword();
         $hashed = password_hash($password, PASSWORD_BCRYPT);
         if (empty($fullname) || empty($email) || empty($password)) {
-            return [
+            return json_encode([
                 "status" => "error",
                 "message" => "Please fill all the required fields"
-            ];
+            ]);
         }
 
         $sql = "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)";
@@ -47,10 +46,10 @@ class User extends UserSkeleton
 
         if (!$stmt) {
 
-            return [
+            return json_encode([
                 "status" => "error",
                 "message" => "Failed to prepare the SQL statement: " . $conn->error
-            ];
+            ]);
         }
 
 
@@ -59,23 +58,23 @@ class User extends UserSkeleton
 
         if (!$stmt->execute()) {
 
-            return [
+            return json_encode([
                 "status" => "error",
                 "message" => "Failed to execute the SQL statement: " . $stmt->error
-            ];
+            ]);
         }
 
 
         if ($stmt->affected_rows > 0) {
-            return [
+            return json_encode([
                 "status" => "success",
                 "message" => "User registered successfully"
-            ];
+            ]);
         } else {
-            return [
+            return json_encode([
                 "status" => "error",
                 "message" => "User registration failed. Please check the data or try again."
-            ];
+            ]);
         }
     }
 
@@ -94,7 +93,7 @@ class User extends UserSkeleton
             $hash = $result->fetch_assoc()['password'];
         } else {
 
-            return ["message" => "email doesn't exist"];
+            return json_encode(["message" => "email doesn't exist"]);
         }
 
 
@@ -106,7 +105,7 @@ class User extends UserSkeleton
                 "message" => "User logged in successfully"
             ]);
         } else {
-            return ['message' => "logged in"];
+            return json_encode(['message' => "logged in"]);
         }
         ;
 
