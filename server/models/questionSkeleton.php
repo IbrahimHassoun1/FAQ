@@ -1,6 +1,7 @@
 <?php
 class QuestionSkeleton
 {
+    public $sd;
     public $id;
     public $question;
     public $answer;
