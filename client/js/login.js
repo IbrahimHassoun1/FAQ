@@ -1,3 +1,4 @@
+const url='http://localhost/faq/'
 async function login(e){
     e.preventDefault();
     const form = document.getElementById('login')
@@ -8,14 +9,14 @@ async function login(e){
     console.log(data)
 
     try{
-        const response = await axios.post("http://localhost/faq/server/user/login.php",data,
+        const response = await axios.post(url+"server/user/login.php",data,
             {headers:{
                 "Content-Type":"application/json"
             }}
         )
         console.log(response.data.status)
         if( response.data.status !=undefined && response.data.status=="success"){
-            window.location.href="http://localhost/faq/client/questions/questions.html"
+            window.location.href=url+"client/questions/questions.html"
         }
         
     }catch(error){

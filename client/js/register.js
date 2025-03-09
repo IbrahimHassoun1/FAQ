@@ -1,3 +1,5 @@
+const url='http://localhost/faq/'
+
 async function  register(event) {
     event.preventDefault()
     const form = document.getElementById("register")
@@ -10,7 +12,7 @@ async function  register(event) {
 console.log(data)
     try{
         
-        const response=await axios.post("../../server/user/register.php", 
+        const response=await axios.post(url+"/server/user/register.php", 
             data,{
             headers:{
                 'Content-Type':"application/json"
@@ -18,7 +20,7 @@ console.log(data)
         }
         )
         console.log(response)
-        window.location.href="http://localhost/faq/client/questions/questions.html"
+        window.location.href=url+"client/questions/questions.html"
     }catch(error){
         console.log(error)
     }

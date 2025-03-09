@@ -29,6 +29,7 @@ class Question extends QuestionSkeleton
         $question = $this->getQuestion();
         $answer = $this->getAnswer();
         if (empty($question) || empty($answer)) {
+            echo json_encode(["status" => "error", "message" => "Please fill all the required fields"]);
             return ["status" => "error", "message" => "Please fill all the required fields"];
         }
         $query = "INSERT INTO questions (question, answer) VALUES (?, ?)";
@@ -37,9 +38,11 @@ class Question extends QuestionSkeleton
         $stmt->bind_param("ss", $question, $answer);
         $stmt->execute();
         if (self::$connection->affected_rows > 0) {
+            echo json_encode(["status" => "success", "message" => "Question created successfully"]);
             return ["status" => "success", "message" => "Question created successfully"];
 
         } else {
+            echo json_encode(["status" => "error", "message" => "Question creation failed"]);
             return ["status" => "error", "message" => "Question creation failed"];
         }
     }
