@@ -33,6 +33,7 @@ class User extends UserSkeleton
         $fullname = $this->getFullName();
         $email = $this->getEmail();
         $password = $this->getPassword();
+        $hashed = password_hash($password, PASSWORD_BCRYPT);
         if (empty($fullname) || empty($email) || empty($password)) {
             return [
                 "status" => "error",
@@ -52,7 +53,7 @@ class User extends UserSkeleton
         }
 
 
-        $stmt->bind_param("sss", $fullname, $email, $password);
+        $stmt->bind_param("sss", $fullname, $email, $hashed);
 
 
         if (!$stmt->execute()) {
@@ -77,5 +78,41 @@ class User extends UserSkeleton
         }
     }
 
+    public function login()
+    {
+        $conn = self::connectDatabase();
+        $email = $this->getEmail();
+        $password = $this->getPassword();
+
+
+        $sql = "SELECT * FROM users WHERE email like ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            echo "email found";
+            echo 1;
+            $hash = $result->fetch_assoc()['password'];
+
+        } else {
+            echo 2;
+            return ["message" => "email doesn't exist"];
+        }
+
+
+        //compare passwords
+        if (!password_verify($password, $hash)) {
+            echo 3;
+            return json_encode([
+                "status" => "success",
+                "message" => "User logged in successfully"
+            ]);
+        } else {
+            return ['message' => "logged in"];
+        }
+        ;
+        echo 4;
+    }
 }
 ?>

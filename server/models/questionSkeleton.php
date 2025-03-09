@@ -1,5 +1,5 @@
 <?php
-class question
+class QuestionSkeleton
 {
     public $id;
     public $question;
